@@ -1,0 +1,59 @@
+.customHeaderButton {
+  height: 30px;
+}
+.customButton:hover,
+.customButton:active,
+.customButton:focus,
+.activeButton {
+  box-shadow:
+    inset -0px -1px 5px #ffffffb2,
+    inset 0px 1px 5px rgba(94, 104, 121, 0.945);
+}
+.customSelectedHeaderButton {
+  box-shadow:
+    inset -0px -1px 5px #ffffffb2,
+    inset 0px 1px 5px rgba(94, 104, 121, 0.945);
+}
+.divcontent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.headerDiv {
+  top: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 3rem;
+  flex-flow: wrap;
+  background-color: #fff;
+}
+.headerDiv .ant-layout-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-flow: wrap;
+  border: 4px solid linear-gradient(97deg, #3a4d8f, #2b3a67 150%);
+  background: linear-gradient(97deg, #2b3a67, #3a4d8f 150%) !important;
+  color: #ffffff;
+  border-radius: 20px;
+  box-shadow:
+    0 0 rgb(43, 58, 103),
+    0px 1px 2px 0px rgba(43, 58, 103 / 0.04),
+    0px 2px 4px 0px rgba(43, 58, 103 / 0.04);
+  height: auto;
+  width: 100%;
+  padding: 14px 16px;
+}
+
+.headerNavItemButton {
+  cursor: default;
+  color: #2b3a67;
+  outline: none;
+  box-shadow: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

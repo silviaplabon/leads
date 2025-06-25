@@ -1,0 +1,32 @@
+.ant-steps .ant-steps-item-process .ant-steps-item-icon,
+.ant-steps .ant-steps-item-finish .ant-steps-item-icon {
+  background-color: #fff !important;
+  border-color: #fff !important;
+}
+.ant-steps-icon {
+  font: normal normal 500 12px var(--font-family);
+  color: #fff !important;
+}
+.ant-steps-item-tail {
+  margin-block-end: 10px !important;
+  inset-inline-start: 13px !important;
+}
+.ant-steps-item-icon {
+  margin-inline-end: 10px !important;
+}
+.ant-steps-item-tail {
+  background: #fff !important;
+  background-color: #fff !important;
+}
+.ant-steps-item-tail:after {
+  background: #fff !important;
+  background-color: #fff !important;
+}
+.custom-vertical-line {
+  position: absolute !important;
+  left: 12px !important;
+  width: 1.5px;
+  top: 35px;
+  background-color: var(--text-color);
+  z-index: 0;
+}

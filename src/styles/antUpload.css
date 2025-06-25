@@ -1,0 +1,58 @@
+.ant-upload {
+  padding: 0.2 0.5rem !important;
+}
+.ant-upload-wrapper .ant-upload-drag p.ant-upload-drag-icon .anticon {
+  color: var(--primary-color);
+  font-size: 35px;
+}
+.ant-upload-text {
+  font: normal normal 500 12px var(--font-family);
+  font-size: 12px !important;
+}
+.ant-upload-drag {
+  max-height: 85px !important;
+}
+.ant-upload-wrapper .ant-upload-list .ant-upload-list-item .ant-upload-list-item-name {
+  max-width: 380px !important;
+}
+.fileUploadTask .ant-upload-drag {
+  max-height: 120px !important;
+  height: 130px !important;
+}
+.ant-upload-list-item-name {
+  font: normal normal 400 11px var(--font-family);
+}
+.ant-upload-list-item:hover {
+  background-color: #eff1f3 !important;
+}
+.ant-upload-list-item-actions .anticon {
+  color: red !important;
+}
+.ant-upload-icon {
+  display: none !important;
+}
+.ant-upload-list-item-actions .ant-upload-list-item-action {
+  opacity: 1 !important;
+}
+.ant-upload-list-item-container {
+  border: 1px dashed var(--primary-color) !important;
+  border-radius: 5px;
+  margin: 0.2rem 0;
+}
+.ant-upload-list-item {
+  margin-top: 0px !important;
+}
+.ant-upload-drag {
+  border: 1px dashed var(--primary-color) !important;
+  box-shadow: none !important;
+}
+
+.maximizedPdfModal {
+  height: 99vh !important;
+  width: calc(100vw) !important;
+  top: 10px !important;
+}
+.antUploadItem:hover {
+  background-color: #eff1f3 !important;
+  border-radius: 5px !important;
+}

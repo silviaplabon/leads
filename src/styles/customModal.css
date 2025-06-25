@@ -1,0 +1,82 @@
+/* MODAL */
+.ant-modal .ant-modal-body {
+  font: normal normal normal 12px var(--font-family) !important;
+}
+.ant-modal-close {
+  display: none;
+}
+.ant-modal-body .header {
+  height: 30px !important;
+  color: #000 !important;
+}
+.ant-modal {
+  display: flex !important;
+  align-items: center;
+  justify-content: center !important;
+  max-height: calc(98vh) !important;
+  max-width: calc(100vw) !important;
+  margin: auto !important;
+  overflow: hidden;
+}
+.ant-modal .ant-modal-content {
+  max-width: calc(92.5vw) !important;
+  margin: auto !important;
+  overflow: hidden;
+  padding: 0px !important;
+  border-radius: 10px !important;
+  max-height: calc(94.5vh) !important;
+  /* top: 0 !important; */
+}
+.ant-modal,
+.ant-modal-content {
+  margin: auto !important;
+  top: 10px !important;
+  overflow: hidden;
+}
+
+/* CONFIRM MODAL */
+.ant-modal-confirm {
+  width: 440px !important;
+}
+.ant-modal-confirm-confirm .ant-modal-content {
+  padding: 0.5rem !important;
+}
+.ant-modal-confirm-btns .ant-btn-primary {
+  background-color: var(--primary-color) !important;
+  color: #fff !important;
+}
+.ant-modal-confirm-btns .ant-btn-default {
+  background-color: #fff !important;
+  color: #000 !important;
+}
+.ant-modal-confirm-btns .ant-checkbox-checked .ant-checkbox-inner {
+  color: var(--primary-color) !important;
+  background-color: var(--primary-color) !important;
+}
+.ant-modal-confirm-body-wrapper .ant-modal-confirm-body {
+  padding: 0.5rem !important;
+  font: normal normal 500 11px var(--font-family);
+}
+.ant-modal-confirm-body-wrapper .ant-modal-confirm-title {
+  font: normal normal 500 15px var(--font-family) !important;
+  margin-left: 0.4rem;
+  margin-top: 0.1rem;
+}
+.ant-modal-confirm-body-wrapper .ant-modal-confirm-btns {
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.ant-modal-confirm-confirm {
+  margin-top: 2rem !important;
+  align-items: flex-start !important;
+}
+
+.crossIconContainer {
+  cursor: pointer;
+  margin-right: 1rem;
+  color: var(--primary-color);
+}
+
+.crossIconContainer:hover {
+  color: red;
+}

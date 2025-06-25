@@ -1,0 +1,113 @@
+.ant-card .ant-card-body {
+  padding: 0.6rem 1rem;
+}
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+  .ant-card .ant-card-body {
+    padding: 0.6rem 0.5rem;
+  }
+}
+/* TABS */
+.ant-tabs-tab-active .ant-tabs-tab-btn,
+.ant-tabs-tab:hover .MuiTypography-root,
+.ant-tabs-tab:hover svg {
+  color: var(--primary-color) !important;
+}
+.ant-tabs p {
+  font: normal normal 500 14px var(--font-family) !important;
+}
+.ant-tabs .ant-tabs-tab + .ant-tabs-tab {
+  margin-left: 15px;
+}
+.ant-tabs-tab-btn .ant-typography {
+  font: normal normal 500 13px var(--font-family) !important;
+}
+
+.dashboardModal .header {
+  padding-left: 20px !important;
+}
+.ant-layout {
+  min-height: 100% !important;
+}
+.Toastify__close-button {
+  color: #000 !important;
+}
+.ant-popover-inner {
+  padding: 0px !important;
+}
+.ant-popover-inner-content .ant-typography:hover {
+  background-color: #f0f0f0;
+}
+.componentInput .ant-input {
+  height: 23px !important;
+}
+.ant-tag {
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+.bodyContainer {
+  padding: 0px 3.1rem;
+  background-color: #ffffff !important;
+  height: 90vh;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+  .bodyContainer {
+    padding: 0rem 1rem;
+  }
+  .headerDiv {
+    padding: 10px 1rem !important;
+  }
+}
+
+/* LOADER */
+.ant-spin-dot-item {
+  background-color: var(--primary-color) !important;
+}
+.ant-spin-text {
+  color: var(--primary-color) !important;
+}
+
+/* BUTTON */
+.ant-btn {
+  font: normal normal normal 11px var(--font-family) !important;
+}
+.submitBtn {
+  font: normal normal 600 12px var(--font-family) !important;
+  border-radius: 0.5rem;
+  text-transform: none;
+  color: black;
+  background-color: #fff;
+  padding: 4px 15px;
+  cursor: pointer;
+  display: flex;
+  border: 1px solid transparent;
+
+  align-items: center;
+   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  outline: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  border-color: #d9d9d9;
+  transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+  user-select: none;
+  touch-action: manipulation;
+}
+.submitBtn span {
+  display: flex;
+  align-items: center;
+}
+
+.ant-btn-default:not(:disabled):not(.ant-btn-disabled):hover {
+  color: #000000;
+  border-color: var(---primary);
+}
+.submitBtnBg:hover,
+.submitBtnBg:focus {
+  border-color: var(---secondary-color) !important;
+  color: #ffffff !important;
+}
+
+.ant-btn-primary {
+  background-color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+}

@@ -1,0 +1,52 @@
+@font-face {
+  font-family: 'StereoGothic';
+  font-style: normal;
+  font-weight: 400;
+  src:
+    local('StereoGothic'),
+    url('./assets/GTWALSHEIM.woff') format('truetype');
+  font-display: swap;
+}
+body {
+  margin: 0;
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
+    'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #f7f7f9!important;
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+:root {
+  --primary-color: #394981;
+  --font-color: #2b3a67;
+  --text-color: #003366;
+  --secondary-color: #faa868;
+  --border-color: #c3c3c3;
+  --font-family: StereoGothic;
+  --font-weight: 400;
+}
+.ant-typography {
+  font-family: var(--font-family) !important;
+}
+.contentContainerCardDiv {
+  border: 1px solid #dde7ee;
+  border-radius: 0.7rem;
+  box-shadow: 0 0.1875rem 0.1875rem 0 #0e223812;
+  margin-bottom: 0.5rem;
+}
+legend {
+  font: normal normal 500 12px var(--font-family);
+  border: 1px solid var(--primary-color);
+  border-radius: 0.3rem;
+  padding: 0.2rem;
+  background-color: var(--primary-color);
+  color: #ffffff;
+}
+fieldset {
+  border: 1px dashed var(--primary-color);
+  border-radius: 0.5rem;
+}

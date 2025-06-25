@@ -1,0 +1,66 @@
+.validInputContainer .ant-picker-outlined:focus-within,
+.ant-picker-outlined:hover {
+  border: 1px solid black;
+  box-shadow: none !important;
+}
+.validInputContainer .ant-select .ant-select-arrow {
+  margin-right: -8px !important;
+  margin-top: -10px !important;
+  font-size: 12px !important;
+}
+.validInputContainer .ant-select .ant-select-clear {
+  font-size: 12px !important;
+  margin-right: -9px !important;
+}
+
+/* DROPDOWN */
+.validInputContainer
+  .ant-select-outlined:not(.ant-select-disabled):not(.ant-select-customize-input):not(
+    .ant-pagination-size-changer
+  ):hover
+  .ant-select-selector,
+.validInputContainer
+  .ant-select-focused
+  .ant-select-outlined:not(.ant-select-disabled):not(.ant-select-customize-input):not(
+    .ant-pagination-size-changer
+  )
+  .ant-select-selector,
+.validInputContainer .ant-input-affix-wrapper:hover,
+.validInputContainer .ant-input-affix-wrapper:focus-within,
+.validInputContainer .ant-select:hover .ant-select-selector,
+.validInputContainer .ant-select:focus .ant-select-selector,
+.validInputContainer
+  .ant-select-focused
+  .ant-select-outlined:not(.ant-select-customize-input):not(.ant-pagination-size-changer)
+  .ant-select-selector,
+.validInputContainer .ant-select:hover .ant-select-selector,
+.validInputContainer .ant-select:focus .ant-select-selector,
+.validInputContainer
+  .ant-select-focused
+  .ant-select-outlined:not(.ant-select-customize-input):not(.ant-pagination-size-changer)
+  .ant-select-selector {
+  border: 1.5px solid var(--primary-color) !important;
+  box-shadow: none !important;
+  border-color: var(--primary-color) !important;
+}
+
+.validInputContainer .ant-input:hover,
+.validInputContainer .ant-input:focus {
+  box-shadow: none !important;
+  border-color: var(--primary-color) !important;
+  border-width: 1.5px !important;
+}
+
+/* SHOWING RED BORDER FOR ERROR FIELDS */
+.errorInputText .ant-picker,
+.errorInputText .ant-select-outlined:not(.ant-select-customize-input) .ant-select-selector,
+.errorInputText .ant-input:placeholder-shown,
+.errorInputText .ant-picker-outlined,
+.errorInputText .ant-select-selector,
+.errorInputText .ant-input,
+.errorInputText .ant-select-outlined:not(.ant-select-customize-input).ant-select-selector {
+  border: 1px solid red !important;
+}
+.errorInputText .ant-typography {
+  color: red !important;
+}
