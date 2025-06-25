@@ -1,32 +1,17 @@
 /* eslint-disable no-debugger */
 /* eslint-disable react/prop-types */
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useContext, useEffect, useRef, useState, useTransition } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import {
-  CONSTANTS,
   DefaultPageLimit,
-  FakeLeadsData,
-  generateSortTextAndCustomQuery,
   GetRequestsOrTasksLovData,
-  RequestsAndTasksAdditionalQueries,
-  requestsIgnoreColumns,
-  taskIgnoreColumns,
 } from '../utils/util.jsx'
-import { CommonAPI } from '../services/common.jsx'
 import TableCellValue from '../components/UI/Table/tableCellValue.jsx'
-// import MuiButton from '../components/UI/CustomButton.jsx'
 import { useNavigate } from 'react-router-dom'
-// import { ExcelIcon, LogsIcon } from '../utils/svgIcons.jsx'
 import { useSelector } from 'react-redux'
-// import RequestsDetails from '../components/tasks/requestsDetail.jsx'
-// import CustomTooltip from '../components/UI/customTooltip.jsx'
-// import Logs from '../components/logs'
-// import ResetFilter from '../components/UI/resetFilter.jsx'
 import '../styles/home.css'
 import CustomTable from '../components/UI/Table/customTable.jsx'
 import HeaderColumn from '../components/UI/Table/headerColumn.jsx'
-// import CustomButton from '../components/UI/CustomButton.jsx'
-// import AddResignationRequest from '../components/addResignationRequest.jsx'
 import useDeviceWidth from '../hooks/useDeviceWidth.jsx'
 import Checkbox from 'antd/es/checkbox/Checkbox.js'
 import CustomButton from '../components/UI/CustomButton.jsx'
@@ -47,22 +32,19 @@ const Dashboard = ({ isMyTasks }) => {
   const [isFilterItemsVisible, setIsFIlterItemsVisible] = useState(false)
   const userType = useSelector((state) => state.user.userType)
 
-  const employeeDetails = useSelector((state) => state.user)
-  const navigate = useNavigate()
-  const screenWidth = useDeviceWidth()
   const activeGroup = ''
   const handleFilter = (typeOfFilter, name, value, isEntered) => {
     setFilterObj((prev) => ({ ...prev, [name]: value }))
     if (isEntered) {
       setPageDetails((prev) => ({ ...prev, pageNumber: 1 }))
-      handleGetRequestsAndTasksData(
-        mode,
-        name,
-        value,
-        pageDetails?.pageLimit || DefaultPageLimit,
-        0,
-      )
-      setFilterDetails((prev) => ({ ...prev, isFilterExist: true }))
+      // handleGetRequestsAndTasksData(
+      //   mode,
+      //   name,
+      //   value,
+      //   pageDetails?.pageLimit || DefaultPageLimit,
+      //   0,
+      // )
+      // setFilterDetails((prev) => ({ ...prev, isFilterExist: true }))
     }
   }
   const handleGetLeadsData = async (
@@ -70,10 +52,6 @@ const Dashboard = ({ isMyTasks }) => {
     type,
     txt,
     limit,
-    pageNum,
-    sortType,
-    responseType,
-    ignoreSort,
   ) => {
     setPageDetails((prev) => ({
       ...prev,

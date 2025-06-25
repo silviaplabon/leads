@@ -141,7 +141,10 @@ textarea.ant-select-selection-search-input {
 .ant-steps-item-tail::after {
   background: var(--primary-color) !important;
 }
-/* .ant-select-dropdown-hidden {
-  display: block;
+
+.ant-avatar{
+  line-height:1.3!important;
+  height:25px!important;
+  width:25px!important;
+  font-size:12px!important
 }
- */
