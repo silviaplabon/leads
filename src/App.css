@@ -5,9 +5,9 @@
   cursor: pointer !important;
 }
 body {
-  background: #f7f7f9 !important;
+  background-color: #d2dee8 !important;
   overflow: hidden;
-  font-family: 'StereoGothic';
+  font-family: 'HankenGrotesk';
   font-size: 12px;
   caret-color: var(--primary-color) !important;
 }

@@ -10,13 +10,14 @@ import '../src/styles/customAntPicker.css'
 
 import { Slide } from 'react-toastify'
 import DamacLoader from './components/UI/AnimatedLogoLoader.jsx'
-import CustomHeader from './components/UI/Header'
+
 
 import '@ant-design/v5-patch-for-react-19'
 import { Layout } from 'antd'
 
 import './App.css'
 import '../src/styles/customModal.css'
+import CustomTopNavbar from './components/UI/customTopNavbar.jsx'
 
 function App() {
   const [loading, setLoading] = useState(false)
@@ -43,7 +44,7 @@ function App() {
         backgroundColor: '#fff',
       }}
     >
-      <CustomHeader></CustomHeader>
+      <CustomTopNavbar></CustomTopNavbar>
       <DamacLoader width={150} height={150} active={loading} />
     </Layout>
   ) : (

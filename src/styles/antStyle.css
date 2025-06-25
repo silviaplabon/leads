@@ -45,14 +45,14 @@
   margin-bottom: 3px;
 }
 .bodyContainer {
-  padding: 0px 3.1rem;
-  background-color: #ffffff !important;
-  height: 90vh;
+  padding: 0px !important;
+  margin: 0px !important;
+  background-color:#D2Dee8!important;
 }
 
 @media only screen and (min-width: 320px) and (max-width: 768px) {
   .bodyContainer {
-    padding: 0rem 1rem;
+    padding: 0rem;
   }
   .headerDiv {
     padding: 10px 1rem !important;
@@ -75,15 +75,15 @@
   font: normal normal 600 12px var(--font-family) !important;
   border-radius: 0.5rem;
   text-transform: none;
-  color: black;
-  background-color: #fff;
+  color: #fff!important;
+  background-color: rgb(57, 69, 81);
   padding: 4px 15px;
   cursor: pointer;
   display: flex;
   border: 1px solid transparent;
 
   align-items: center;
-   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   outline: none;
   border: 1px solid transparent;
   cursor: pointer;

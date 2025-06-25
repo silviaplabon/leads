@@ -1,42 +1,30 @@
 /* eslint-disable no-debugger */
 /* eslint-disable react/prop-types */
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useRef, useState } from 'react'
-import {
-  DefaultPageLimit,
-  GetRequestsOrTasksLovData,
-} from '../utils/util.jsx'
-import TableCellValue from '../components/UI/Table/tableCellValue.jsx'
-import { useNavigate } from 'react-router-dom'
-import { useSelector } from 'react-redux'
-import '../styles/home.css'
-import CustomTable from '../components/UI/Table/customTable.jsx'
-import HeaderColumn from '../components/UI/Table/headerColumn.jsx'
-import useDeviceWidth from '../hooks/useDeviceWidth.jsx'
-import Checkbox from 'antd/es/checkbox/Checkbox.js'
-import CustomButton from '../components/UI/CustomButton.jsx'
-import CustomTypography from '../components/UI/customTypography.jsx'
-import { DashboardSvgIcon, ListSvgIcon } from '../utils/svgIcons.jsx'
-import CustomAutoComplete from '../components/UI/Input/customAutoComplete.jsx'
-import { fakeLeadsData } from '../utils/fakeData.jsx'
+import { useEffect, useRef, useState } from "react";
+import { DefaultPageLimit, GetRequestsOrTasksLovData } from "../utils/util.jsx";
+import TableCellValue from "../components/UI/Table/tableCellValue.jsx";
+import { useSelector } from "react-redux";
+import CustomTable from "../components/UI/Table/customTable.jsx";
+import HeaderColumn from "../components/UI/Table/headerColumn.jsx";
+import Checkbox from "antd/es/checkbox/Checkbox.js";
+import { fakeLeadsData } from "../utils/fakeData.jsx";
 
 const Dashboard = ({ isMyTasks }) => {
-  const [pageLoader, setpageLoader] = useState(false)
-  const [pageDetails, setPageDetails] = useState()
-  const [pageData, setpageData] = useState([])
-  const breadcrumbRef = useRef(null)
-  const [mode, setMode] = useState('Tasks')
-  const [sortObj, setSortObj] = useState({})
-  const [filterObj, setFilterObj] = useState({})
-  const [filterDetails, setFilterDetails] = useState()
-  const [isFilterItemsVisible, setIsFIlterItemsVisible] = useState(false)
-  const userType = useSelector((state) => state.user.userType)
+  const sortObj = {};
+  const [pageLoader] = useState(false);
+  const [pageDetails, setPageDetails] = useState();
+  const [pageData, setpageData] = useState([]);
+  const breadcrumbRef = useRef(null);
+  const [filterObj, setFilterObj] = useState({});
+  const [isFilterItemsVisible, setIsFIlterItemsVisible] = useState(false);
+  const userType = useSelector((state) => state.user.userType);
 
-  const activeGroup = ''
+  const activeGroup = "";
   const handleFilter = (typeOfFilter, name, value, isEntered) => {
-    setFilterObj((prev) => ({ ...prev, [name]: value }))
+    setFilterObj((prev) => ({ ...prev, [name]: value }));
     if (isEntered) {
-      setPageDetails((prev) => ({ ...prev, pageNumber: 1 }))
+      setPageDetails((prev) => ({ ...prev, pageNumber: 1 }));
       // handleGetRequestsAndTasksData(
       //   mode,
       //   name,
@@ -46,20 +34,15 @@ const Dashboard = ({ isMyTasks }) => {
       // )
       // setFilterDetails((prev) => ({ ...prev, isFilterExist: true }))
     }
-  }
-  const handleGetLeadsData = async (
-    tab,
-    type,
-    txt,
-    limit,
-  ) => {
+  };
+  const handleGetLeadsData = async (tab, type, txt, limit) => {
     setPageDetails((prev) => ({
       ...prev,
       totallineCount: fakeLeadsData?.length || 0,
       noOfPages: fakeLeadsData?.length / (limit ? limit : DefaultPageLimit),
       pageLimit: limit ? limit : DefaultPageLimit,
-    }))
-    setpageData(fakeLeadsData)
+    }));
+    setpageData(fakeLeadsData);
     // const additionalSearchTemp = {}
 
     // const { additionalQueries, isGroupFilterApplied } = RequestsAndTasksAdditionalQueries(
@@ -144,46 +127,32 @@ const Dashboard = ({ isMyTasks }) => {
     // } else {
     //   return resData
     // }
-  }
-  const [allStatus, setAllStatus] = useState('')
-  const [allSources, setAllSources] = useState('')
-
-  const inputFieldCommonParams = {
-    isRequired: false,
-    isModalField: false,
-    isWithController: false,
-    isEditable: false,
-  }
-  const GridSize = {
-    childrenGridSize: 24,
-    inputGridSize: 24,
-    titleGridSize: 24,
-  }
+  };
 
   const changePageFn = (num, limit) => {
-    const updatedPageNo = limit !== pageDetails?.pageLimit ? 1 : num
+    const updatedPageNo = limit !== pageDetails?.pageLimit ? 1 : num;
     setPageDetails((prev) => ({
       ...prev,
       pageNumber: updatedPageNo,
       pageLimit: limit,
-    }))
-    handleGetRequestsAndTasksData(mode, '', '', limit, updatedPageNo - 1)
-  }
-  const handleSorting = (sortType) => {
+    }));
+    // handleGetRequestsAndTasksData(mode, '', '', limit, updatedPageNo - 1)
+  };
+  const handleSorting = () => {
     setPageDetails((prev) => ({
       ...prev,
       pageNumber: 1,
       pageLimit: pageDetails?.pageLimit || DefaultPageLimit,
-    }))
-    handleGetRequestsAndTasksData(
-      mode,
-      '',
-      '',
-      pageDetails?.pageLimit || DefaultPageLimit,
-      0,
-      sortType,
-    )
-  }
+    }));
+    // handleGetRequestsAndTasksData(
+    //   mode,
+    //   '',
+    //   '',
+    //   pageDetails?.pageLimit || DefaultPageLimit,
+    //   0,
+    //   sortType,
+    // )
+  };
   const getHeaderColumn = (
     title,
     name,
@@ -192,7 +161,7 @@ const Dashboard = ({ isMyTasks }) => {
     sortObj,
     updatedActiveGroup,
     userUpdatedType,
-    updatedIsMyTasks,
+    updatedIsMyTasks
   ) => (
     <HeaderColumn
       title={title}
@@ -211,7 +180,7 @@ const Dashboard = ({ isMyTasks }) => {
       hideFilterIcon={!typeOfFilter}
       isMyTasks={updatedIsMyTasks}
     />
-  )
+  );
 
   const renderTableCell = (
     index,
@@ -221,7 +190,7 @@ const Dashboard = ({ isMyTasks }) => {
     showTitleEllipsis = false,
     cellStyle,
     isLink,
-    isNavigateLink,
+    isNavigateLink
   ) => {
     return (
       <TableCellValue
@@ -234,214 +203,114 @@ const Dashboard = ({ isMyTasks }) => {
         isLink={isLink}
         isNavigateLink={isNavigateLink}
       ></TableCellValue>
-    )
-  }
+    );
+  };
   const leadDashboardColumns = [
     {
-      title: () => '',
-      width: 30,
-      render: (item, index) => (
-        <>
-          {' '}
+      title: () => "",
+      width: 50,
+      render: () => (
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          {" "}
           <Checkbox checked={false} disabled={false}></Checkbox>
-        </>
+        </div>
       ),
     },
     {
       title: () =>
-        getHeaderColumn('Name', 'name', 'Text', '', '', activeGroup, userType, isMyTasks),
-      width: 120,
-      render: (item, index) => renderTableCell(index, item?.name, ''),
+        getHeaderColumn(
+          "Name",
+          "name",
+          "Text",
+          "",
+          "",
+          activeGroup,
+          userType,
+          isMyTasks
+        ),
+      width: 110,
+      render: (item, index) => renderTableCell(index, item?.name, ""),
     },
     {
       title: () =>
-        getHeaderColumn('Status', 'status', 'Text', handleSorting, sortObj, activeGroup, userType),
-      width: 130,
-      render: (item, index) => renderTableCell(index, item?.status, ''),
+        getHeaderColumn(
+          "Status",
+          "status",
+          "Text",
+          handleSorting,
+          sortObj,
+          activeGroup,
+          userType
+        ),
+      width: 110,
+      render: (item, index) => renderTableCell(index, item?.status, ""),
     },
     {
-      title: () => getHeaderColumn('Lead Owner', 'leadOwner', 'Text', handleSorting, sortObj),
-      width: 110,
-      render: (item, index) => renderTableCell(index, item?.leadOwner, '', true, '', true),
+      title: () =>
+        getHeaderColumn(
+          "Lead Owner",
+          "leadOwner",
+          "Text",
+          handleSorting,
+          sortObj
+        ),
+      width: 100,
+      render: (item, index) =>
+        renderTableCell(index, item?.leadOwner, "", true, "", true),
     },
 
     {
-      title: () => getHeaderColumn('Mobile', 'mobile', ''),
+      title: () => getHeaderColumn("Mobile", "mobile", ""),
       width: 80,
       hidden: false,
-      render: (item, index) => renderTableCell(index, item?.mobile, ''),
+      render: (item, index) => renderTableCell(index, item?.mobile, ""),
     },
     {
-      title: () => getHeaderColumn('Email', 'email', ''),
+      title: () => getHeaderColumn("Email", "email", ""),
       width: 90,
       hidden: false,
-      render: (item, index) => renderTableCell(index, item?.email, ''),
+      render: (item, index) => renderTableCell(index, item?.email, ""),
     },
 
     {
-      title: () => getHeaderColumn('Recent Activity', 'recentActivity', 'Text'),
+      title: () => getHeaderColumn("Recent Activity", "recentActivity", "Text"),
       width: 100,
       hidden: false,
-      render: (item, index) => renderTableCell(index, item?.recentActivity, ''),
+      render: (item, index) => renderTableCell(index, item?.recentActivity, ""),
     },
     {
-      title: () => getHeaderColumn('Created On', 'createdOn', ''),
+      title: () => getHeaderColumn("Created On", "createdOn", ""),
       width: 110,
       hidden: false,
-      render: (item, index) => renderTableCell(index, item?.createdOn, '', true),
+      render: (item, index) =>
+        renderTableCell(index, item?.createdOn, "", true),
     },
-  ]
+  ];
 
   useEffect(() => {
-    handleGetLeadsData()
-  }, [])
+    handleGetLeadsData();
+  }, []);
 
   return (
     <>
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          padding: '0.2rem 0.34rem',
-          marginBottom: '0.5rem',
-        }}
-      >
-        {' '}
-        <CustomTypography fontSize='20' fontWeight={'bold'} textVal={'Leads'}></CustomTypography>
-        <div style={{ display: 'flex' }}>
-          <CustomButton
-            title={'Add Lead'}
-            showLoader={pageLoader}
-            style={{
-              backgroundColor: '#fffff',
-              color: '#000',
-              marginRight: '1rem',
-              boxShadow: '0 -1px 5px #ffffffb2,0 1px 5px rgba(94,104,121,.945)',
-            }}
-            handleButtonClick={() => {
-              // downloadReport()
-            }}
-          ></CustomButton>
-          <CustomButton
-            title={'Import'}
-            showLoader={pageLoader}
-            style={{
-              backgroundColor: '#fffff',
-              color: '#000',
-              marginLeft: '',
-              boxShadow: '0 -1px 5px #ffffffb2,0 1px 5px rgba(94,104,121,.945)',
-            }}
-            handleButtonClick={() => {
-              // downloadReport()
-            }}
-          ></CustomButton>
-        </div>
-      </div>
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <div style={{ display: 'flex' }}>
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              padding: '0.5rem',
-              marginBottom: '0.5rem',
-              boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px',
-            }}
-          >
-            <span style={{ marginRight: '0.5rem' }}>Show As</span>{' '}
-            <span style={{ marginRight: '0.5rem' }}>Board </span> {DashboardSvgIcon()}{' '}
-            <span style={{ margin: '0 0.5rem' }}>|</span>{' '}
-            <span style={{ marginRight: '0.5rem' }}>List </span>
-            {ListSvgIcon()}
-          </div>
-          <div style={{ display: 'flex' }}>
-            <div style={{ maxWidth: '140px',minWidth:"120px", margin: '0 0.5rem' }}>
-              <CustomAutoComplete
-                height={32}
-                getLovData={async (searchText) => {}}
-                handleOnSearch={() => {
-                  // setSelectedEmployeeDetails()
-                }}
-                handleSelection={(val1, val2) => {
-                  // setSelectedEmployeeDetails(val2?.data)
-                  // clearErrors('selectedEmployeeName')
-                }}
-                value='All Status'
-                codeKey='status'
-                name={'status'}
-                isWithController={false}
-                errorText={``}
-                setValue={setAllStatus}
-                gridSize={{ ...GridSize, inputGridSize: 24 }}
-                {...inputFieldCommonParams}
-              ></CustomAutoComplete>
-            </div>
-            <div style={{ maxWidth: '140px', minWidth:"120px", margin: '0 0.5rem' }}>
-              <CustomAutoComplete
-                height={32}
-                getLovData={async (searchText) => {}}
-                handleOnSearch={() => {
-                  // setSelectedEmployeeDetails()
-                }}
-                handleSelection={(val1, val2) => {
-                  // setSelectedEmployeeDetails(val2?.data)
-                  // clearErrors('selectedEmployeeName')
-                }}
-                value='All Sources'
-                codeKey='sources'
-                name={'sources'}
-                isWithController={false}
-                errorText={``}
-                setValue={setAllStatus}
-                gridSize={{ ...GridSize, inputGridSize: 24 }}
-                {...inputFieldCommonParams}
-              ></CustomAutoComplete>
-            </div>
-          </div>
-        </div>
-        <div style={{display:'flex'}}>
-           <div style={{ maxWidth: '200px', minWidth:'150px',margin: '0 0.5rem' }}>
-              <CustomAutoComplete
-                height={32}
-                getLovData={async (searchText) => {}}
-                handleOnSearch={() => {
-                  // setSelectedEmployeeDetails()
-                }}
-                handleSelection={(val1, val2) => {
-                  // setSelectedEmployeeDetails(val2?.data)
-                  // clearErrors('selectedEmployeeName')
-                }}
-                value='Recently Updated'
-                codeKey='sources'
-                name={'sources'}
-                isWithController={false}
-                errorText={``}
-                setValue={setAllStatus}
-                gridSize={{ ...GridSize, inputGridSize: 24 }}
-                {...inputFieldCommonParams}
-              ></CustomAutoComplete>
-            </div>
-
-        </div>
-      </div>
-      <div >
-
-      <CustomTable
-        pageNumber={pageDetails?.pageNumber}
-        changePageFn={changePageFn}
-        noOfPages={pageDetails?.noOfPages}
-        pageLimit={pageDetails?.pageLimit}
-        tableWidth={'700px'}
-        dataSource={pageData}
-        ref={breadcrumbRef}
-        tableIndex={`ReqTasksTable${mode}`}
-        pageLoader={pageLoader}
-        columns={leadDashboardColumns}
-        totalCount={pageDetails?.totallineCount}
-      ></CustomTable>
+      <div>
+        <CustomTable
+          pageNumber={pageDetails?.pageNumber}
+          changePageFn={changePageFn}
+          noOfPages={pageDetails?.noOfPages}
+          pageLimit={pageDetails?.pageLimit}
+          tableWidth={"700px"}
+          dataSource={pageData}
+          ref={breadcrumbRef}
+          tableHeight={'65vh'}
+          tableIndex={`ReqTasksTable`}
+          pageLoader={pageLoader}
+          columns={leadDashboardColumns}
+          totalCount={pageDetails?.totallineCount}
+        ></CustomTable>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Dashboard
+export default Dashboard;

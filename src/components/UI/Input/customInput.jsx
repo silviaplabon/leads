@@ -317,7 +317,6 @@ const RenderCustomInput = (props) => {
           maxLength={maxLength}
           style={{
             font: `normal normal normal 11px ${FontFamily}`,
-            width: '100%',
             color: isFilterItem ? '#2b3a67' : '#222222',
             // backgroundColor: themeData?.inputBgColor,
           }}

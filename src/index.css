@@ -4,9 +4,19 @@
   font-weight: 400;
   src:
     local('StereoGothic'),
-    url('./assets/GTWALSHEIM.woff') format('truetype');
+    url('./assets/StereoGothic.ttf') format('truetype');
   font-display: swap;
 }
+@font-face {
+  font-family: 'HankenGrotesk';
+  font-style: normal;
+  font-weight: 400;
+  src:
+    local('HankenGrotesk'),
+    url('./assets/HankenGrotesk-Regular.woff') format('truetype');
+  font-display: swap;
+}
+
 body {
   margin: 0;
   font-family:
@@ -14,19 +24,20 @@ body {
     'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #f7f7f9!important;
+  background-color: #f7f7f9!important;
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 :root {
-  --primary-color: #394981;
+  --primary-color: #000229;
+  --ternary-color:#D2Dee8;
   --font-color: #2b3a67;
   --text-color: #003366;
-  --secondary-color: #faa868;
+  --secondary-color:#e394551;
   --border-color: #c3c3c3;
-  --font-family: StereoGothic;
+  --font-family: HankenGrotesk;
   --font-weight: 400;
 }
 .ant-typography {

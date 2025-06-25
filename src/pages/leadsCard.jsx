@@ -4,6 +4,7 @@ import {
   BackgroundColorObj,
   GetInitialsAvatar,
   ParseDate,
+  ThemeData,
 } from "../utils/util";
 import { GlobeSvgIcon, MailSvgIcon, PhoneSvgIcon } from "../utils/svgIcons";
 import CustomTypography from "../components/UI/customTypography";
@@ -51,8 +52,7 @@ const LeadCards = () => {
           <Col lg={6} key={actionType}>
             <div
               style={{
-                border: "1px solid #000",
-                backgroundColor: "#f3f6f7",
+                backgroundColor: '#fff',
                 padding: "0.5rem 0.7rem",
                 borderRadius: "0.5rem",
               }}
@@ -64,7 +64,13 @@ const LeadCards = () => {
                   marginLeft: "0.3rem",
                 }}
               >
-                <div style={{ display: "flex", alignItems: "center" ,maxWidth:"85%"}}>
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    maxWidth: "85%",
+                  }}
+                >
                   <span
                     style={{
                       width: "4px",

@@ -1,16 +1,14 @@
-import { createSlice } from '@reduxjs/toolkit'
-
-const initialState = {}
-
+import { createSlice } from "@reduxjs/toolkit";
+const initialState = { selectedButton: "Dashboard" };
 const ThemeSlice = createSlice({
-  name: 'theme',
+  name: "theme",
   initialState,
   reducers: {
     updateSelectedNavBtn: (state, action) => {
-      state.selectedButton = action.payload
+      state.selectedButton = action.payload;
     },
   },
-})
+});
 
-export const { updateSelectedNavBtn } = ThemeSlice.actions
-export default ThemeSlice.reducer
+export const { updateSelectedNavBtn } = ThemeSlice.actions;
+export default ThemeSlice.reducer;

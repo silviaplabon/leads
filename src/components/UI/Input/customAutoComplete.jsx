@@ -1,11 +1,12 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react-hooks/exhaustive-deps */
-import { AutoComplete, Spin, Typography } from 'antd'
-import React, { useState, useEffect } from 'react'
-import { Controller } from 'react-hook-form'
-import CustomInputFieldContainer from '../Container/customInputFieldContainer.jsx'
-import AntResult from '../AntResult'
-import { FontFamily } from '../../../utils/util.jsx'
+import { AutoComplete, Spin, Typography } from "antd";
+import React, { useState, useEffect } from "react";
+import { Controller } from "react-hook-form";
+import CustomInputFieldContainer from "../Container/customInputFieldContainer.jsx";
+import AntResult from "../AntResult";
+import { FontFamily } from "../../../utils/util.jsx";
+import { DownOutlined } from "@ant-design/icons";
 
 const AutoCompleteComponent = (props) => {
   const {
@@ -22,38 +23,41 @@ const AutoCompleteComponent = (props) => {
     field,
     fontFamily,
     isFilterItem,
-  } = props
+  } = props;
 
-  const [searchText, setSearchText] = useState('')
-  const [isLovLoading, setIsLovLoading] = useState(false)
-  const [lov, setLov] = useState([])
-  const [filteredLov, setFilteredLov] = useState([])
-  const [isSearching, setIsSearching] = useState('')
+  const [searchText, setSearchText] = useState("");
+  const [isLovLoading, setIsLovLoading] = useState(false);
+  const [lov, setLov] = useState([]);
+  const [filteredLov, setFilteredLov] = useState([]);
+  const [isSearching, setIsSearching] = useState("");
 
   useEffect(() => {
     if (isCharacterLimitedSearch) {
       if (searchText?.length < 3) {
-        setFilteredLov([])
+        setFilteredLov([]);
       } else {
-        setFilteredLov(lov)
+        setFilteredLov(lov);
       }
     } else {
-      setFilteredLov(lov)
+      setFilteredLov(lov);
     }
-  }, [lov])
+  }, [lov]);
 
   const handleSelectChange = (val1) => {
     if (isWithController) {
-      setValue(`${codeKey}`, val1)
+      setValue(`${codeKey}`, val1);
     }
-  }
+  };
 
   return (
     <>
       <AutoComplete
+        suffixIcon={<DownOutlined />}
         options={
           !filteredLov?.length > 0
-            ? !isLovLoading && isCharacterLimitedSearch && (!searchText || searchText?.length < 3)
+            ? !isLovLoading &&
+              isCharacterLimitedSearch &&
+              (!searchText || searchText?.length < 3)
               ? [
                   {
                     label: `Please enter ${
@@ -61,7 +65,7 @@ const AutoCompleteComponent = (props) => {
                         ? 3 - (searchText?.length ? searchText.length : 0)
                         : 0
                     } or more characters to search...`,
-                    value: '',
+                    value: "",
                     disabled: true,
                   },
                 ]
@@ -73,135 +77,139 @@ const AutoCompleteComponent = (props) => {
         }}
         {...(!isWithController && { value: value })}
         style={{
-          width: '100%',
-          minWidth: minWidth ? minWidth : '150px',
+          width: "100%",
+          minWidth: minWidth ? minWidth : "150px",
           height: 25,
-          color: isFilterItem ? '#2b3a67' : '#222222',
+          color: isFilterItem ? "#2b3a67" : "#222222",
         }}
         notFoundContent={
           isLovLoading ? (
-            <div className='spinContainer '>
-              <Spin size='small' />
+            <div className="spinContainer ">
+              <Spin size="small" />
             </div>
           ) : (
-            <AntResult typeOfResult='datanotexist' />
+            <AntResult typeOfResult="datanotexist" />
           )
         }
-        autoComplete='off'
-        className='w-full  rounded-md text-xs customInputText'
+        autoComplete="off"
+        className="w-full  rounded-md text-xs customInputText"
         {...field}
         onSelect={(val1, val2) => {
-          setSearchText('')
-          setIsSearching(false)
+          setSearchText("");
+          setIsSearching(false);
           if (isWithController) {
-            field.onChange(val2.label)
+            field.onChange(val2.label);
           }
-          handleSelectChange(val1, val2)
-          if (typeof handleSelection === 'function') {
-            handleSelection(val1, val2)
+          handleSelectChange(val1, val2);
+          if (typeof handleSelection === "function") {
+            handleSelection(val1, val2);
           }
         }}
         allowClear
         onClear={() => {
           if (isWithController) {
-            field.onChange()
-            handleSelectChange('', '')
+            field.onChange();
+            handleSelectChange("", "");
           }
-          handleSelection('', '')
+          handleSelection("", "");
         }}
         onBlur={() => {
-          setSearchText('')
+          setSearchText("");
           if (searchText === value) {
-            if (typeof setValue === 'function') {
-              setValue('')
+            if (typeof setValue === "function") {
+              setValue("");
             }
-            if (typeof setLov === 'function') {
-              setLov([])
+            if (typeof setLov === "function") {
+              setLov([]);
             }
           }
-          if (typeof handleOnSearch === 'function' && searchText === '' && isSearching) {
-            handleOnSearch('')
+          if (
+            typeof handleOnSearch === "function" &&
+            searchText === "" &&
+            isSearching
+          ) {
+            handleOnSearch("");
           }
           if (isSearching && isWithController) {
-            field.onChange('')
+            field.onChange("");
           }
         }}
         onDropdownVisibleChange={async (open) => {
           if (open) {
             if (!isCharacterLimitedSearch) {
-              setIsLovLoading(true)
-              const data = await getLovData()
+              setIsLovLoading(true);
+              const data = await getLovData();
 
-              setIsLovLoading(false)
-              setLov(data?.lov ? data.lov : [])
-              setFilteredLov(data?.lov ? data.lov : [])
+              setIsLovLoading(false);
+              setLov(data?.lov ? data.lov : []);
+              setFilteredLov(data?.lov ? data.lov : []);
             } else if (isCharacterLimitedSearch && value && !searchText) {
-              setIsSearching(true)
-              setSearchText(value)
+              setIsSearching(true);
+              setSearchText(value);
               if (value?.length > 2) {
-                setIsLovLoading(true)
-                const data = await getLovData(value)
+                setIsLovLoading(true);
+                const data = await getLovData(value);
                 if (!data?.isCancelledApi) {
-                  setIsLovLoading(false)
+                  setIsLovLoading(false);
                 }
                 if (value?.length > 2 && data?.lov) {
-                  setLov(data.lov)
+                  setLov(data.lov);
                 } else {
-                  setFilteredLov([])
-                  setLov([])
+                  setFilteredLov([]);
+                  setLov([]);
                 }
               } else {
-                setFilteredLov([])
-                setLov([])
+                setFilteredLov([]);
+                setLov([]);
               }
             } else {
               // FOR HANDLING DEFAULT LOV
-              const data = await getLovData('', true)
-              setIsLovLoading(false)
-              setLov(data?.lov ? data.lov : [])
+              const data = await getLovData("", true);
+              setIsLovLoading(false);
+              setLov(data?.lov ? data.lov : []);
             }
           }
         }}
         onSearch={async (text) => {
-          if (typeof setValue === 'function') {
-            setValue(text)
+          if (typeof setValue === "function") {
+            setValue(text);
           }
 
-          setSearchText(text)
-          if (typeof handleOnSearch === 'function') {
-            handleOnSearch(text)
+          setSearchText(text);
+          if (typeof handleOnSearch === "function") {
+            handleOnSearch(text);
           }
           if (isCharacterLimitedSearch) {
-            setIsSearching(true)
+            setIsSearching(true);
             if (text?.length > 2) {
-              setIsLovLoading(true)
-              const data = await getLovData(text)
+              setIsLovLoading(true);
+              const data = await getLovData(text);
               if (!data?.isCancelledApi) {
-                setIsLovLoading(false)
+                setIsLovLoading(false);
               }
               if (text?.length > 2 && data?.lov) {
-                setLov(data.lov)
+                setLov(data.lov);
               } else {
-                setFilteredLov([])
-                setLov([])
+                setFilteredLov([]);
+                setLov([]);
               }
             } else {
-              setFilteredLov([])
-              setLov([])
+              setFilteredLov([]);
+              setLov([]);
             }
           } else {
-            setIsSearching(true)
+            setIsSearching(true);
             const temp = lov?.filter((item) =>
-              item?.label?.toLowerCase().includes(text?.toLowerCase()),
-            )
-            setFilteredLov(temp)
+              item?.label?.toLowerCase().includes(text?.toLowerCase())
+            );
+            setFilteredLov(temp);
           }
         }}
         placeholder={placeholderText}
       />
     </>
-  )
-}
+  );
+};
 
 const CustomAutoComplete = (props) => {
   const {
@@ -216,7 +224,7 @@ const CustomAutoComplete = (props) => {
     gridSize,
     hideErrorMessageContainer,
     isHorizontalInput,
-  } = props
+  } = props;
 
   return (
     <>
@@ -225,16 +233,18 @@ const CustomAutoComplete = (props) => {
         isMandatory={isRequired}
         gridSize={gridSize}
         isHorizontalInput={isHorizontalInput}
-        value={isHorizontalInput ? 'children' : ''}
+        value={isHorizontalInput ? "children" : ""}
       >
         <div
-          style={{ width: '100%', display: 'flex', flexDirection: 'column' }}
-          className={errors && errors[name] ? 'errorInputText' : 'validInputContainer'}
+          style={{ width: "100%", display: "flex", flexDirection: "column" }}
+          className={
+            errors && errors[name] ? "errorInputText" : "validInputContainer"
+          }
         >
           {isWithController ? (
             <Controller
               name={name}
-              control={isWithController ? control : ''}
+              control={isWithController ? control : ""}
               defaultValue={null}
               rules={{
                 validate: (value) => value !== `Select ${labelName}`,
@@ -259,10 +269,10 @@ const CustomAutoComplete = (props) => {
             (errors && errors[name] && isWithController ? (
               <Typography
                 style={{
-                  height: '14px',
+                  height: "14px",
                   font: `normal normal normal 11px ${FontFamily}`,
-                  marginBottom: '0.5rem',
-                  color: 'red',
+                  marginBottom: "0.5rem",
+                  color: "red",
                 }}
               >
                 {errorText ? errorText : `${labelName} is required`}
@@ -270,7 +280,7 @@ const CustomAutoComplete = (props) => {
             ) : (
               <Typography
                 style={{
-                  height: '14px',
+                  height: "14px",
                   font: `normal normal normal 11px ${FontFamily}`,
                 }}
               ></Typography>
@@ -278,6 +288,6 @@ const CustomAutoComplete = (props) => {
         </div>
       </CustomInputFieldContainer>
     </>
-  )
-}
-export default React.memo(CustomAutoComplete)
+  );
+};
+export default React.memo(CustomAutoComplete);
