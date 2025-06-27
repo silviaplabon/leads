@@ -8,7 +8,7 @@ import LeadSummaryDetails from "../features/leadSummaryDetails";
 
 const LeadDetails = () => {
   const [alignValue, setAlignValue] = useState("");
-  const [note, setNote] = useState("");
+  const [, setNote] = useState("");
   const GridSize = {
     childrenGridSize: 24,
     inputGridSize: 24,

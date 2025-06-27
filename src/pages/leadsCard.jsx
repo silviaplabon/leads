@@ -1,10 +1,10 @@
+/* eslint-disable no-debugger */
 import { Avatar, Badge, Card, Col, Row, Typography } from "antd";
-
 import {
-  BackgroundColorObj,
   GetInitialsAvatar,
+  getRandomTextAvatarColor,
+  getRecentActivityColor,
   ParseDate,
-  ThemeData,
 } from "../utils/util";
 import { GlobeSvgIcon, MailSvgIcon, PhoneSvgIcon } from "../utils/svgIcons";
 import CustomTypography from "../components/UI/customTypography";
@@ -21,30 +21,13 @@ const LeadCards = () => {
       return result;
     }, {});
   };
-  const groupedData = groupBy(fakeLeadsData, "typeOfAction");
+  const groupedData = groupBy(fakeLeadsData, "stage");
   const descriptionItems = [
     { icon: PhoneSvgIcon(), keyName: "mobile" },
     { icon: MailSvgIcon(), keyName: "email" },
     { icon: GlobeSvgIcon(), keyName: "purchaseCompanyName" },
   ];
 
-  const getRecentActivityColor = (item, isBg) => {
-    let updatedStatus = "success";
-    if (item == "Fast Response" || item == "Clicked Email") {
-      updatedStatus = "primary";
-    } else if (item == "Form Submitted" || item === "Chat Started") {
-      updatedStatus = "success";
-    } else {
-      updatedStatus = "warning";
-    }
-    return isBg
-      ? BackgroundColorObj[`${updatedStatus}`][1]
-        ? BackgroundColorObj[`${updatedStatus}`][1]
-        : BackgroundColorObj[`${updatedStatus}`][0]
-          ? BackgroundColorObj[`${updatedStatus}`][0]
-          : ""
-      : "";
-  };
   return (
     <>
       <Row gutter={[10, 10]}>
@@ -52,7 +35,7 @@ const LeadCards = () => {
           <Col lg={6} key={actionType}>
             <div
               style={{
-                backgroundColor: '#fff',
+                backgroundColor: "#f3f5f7",
                 padding: "0.5rem 0.7rem",
                 borderRadius: "0.5rem",
               }}
@@ -82,7 +65,7 @@ const LeadCards = () => {
                   ></span>
                   <CustomTypography
                     fontWeight={"bold"}
-                    fontSize={13}
+                    fontSize={12}
                     textVal={actionType}
                     style={{
                       textOverflow: "ellipsis",
@@ -106,9 +89,8 @@ const LeadCards = () => {
                   loading={false}
                   style={{
                     Width: 300,
-                    marginTop: "0.8rem",
-                    boxShadow:
-                      "rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px",
+                    padding: "0.25rem",
+                    marginTop: "0.3rem",
                   }}
                   key={`${leadItem?.name}-${index}`}
                 >
@@ -118,6 +100,7 @@ const LeadCards = () => {
                         <div
                           style={{
                             display: "flex",
+                            marginTop: "0.5rem",
                             justifyContent: "space-between",
                           }}
                         >
@@ -127,8 +110,12 @@ const LeadCards = () => {
                               style: { color: "#f56a00" },
                             }}
                           >
-                            <Avatar>
-                              {GetInitialsAvatar(leadItem?.recentActivity)}
+                            <Avatar
+                              style={{
+                                backgroundColor: getRandomTextAvatarColor(),
+                              }}
+                            >
+                              {GetInitialsAvatar(leadItem?.name)}
                             </Avatar>
                           </Avatar.Group>
                           <div
@@ -139,29 +126,29 @@ const LeadCards = () => {
                               alignItems: "center",
                               height: "22px",
                               backgroundColor: getRecentActivityColor(
-                                leadItem?.recentActivity,
+                                leadItem?.leadStatus,
                                 true
                               ),
                             }}
                           >
                             <CustomTypography
-                              textVal={leadItem?.recentActivity}
-                              fontSize={12}
+                              fontSize={11}
+                              textVal={`${leadItem?.leadStatus}`}
                               style={{
-                                color: getRecentActivityColor(
-                                  leadItem?.recentActivity
-                                ),
+                                color: getRecentActivityColor(leadItem?.leadStatus),
                               }}
                             ></CustomTypography>
                           </div>
                         </div>
                         <CustomTypography
                           textVal={leadItem?.name}
-                          fontWeight={600}
-                          fontSize={14}
-                          style={{ marginTop: "0.5rem" }}
+                          fontWeight={700}
+                          fontSize={12}
+                          style={{ marginTop: "0.3rem" }}
                         ></CustomTypography>
                         <CustomTypography
+                          fontSize={11}
+                          fontWeight={400}
                           style={{ color: "gray" }}
                           textVal={ParseDate(leadItem?.createdOn)}
                         ></CustomTypography>
@@ -186,11 +173,12 @@ const LeadCards = () => {
                           >
                             {descriptionItem.icon}
                             <CustomTypography
+                              fontWeight={400}
                               style={{ marginLeft: "1rem", marginTop: "0rem" }}
                               textVal={
                                 leadItem[`${descriptionItem?.keyName}`] || "-"
                               }
-                              fontSize={13}
+                              fontSize={11}
                             ></CustomTypography>
                           </div>
                         ))}

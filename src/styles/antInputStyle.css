@@ -150,8 +150,7 @@ textarea.ant-select-selection-search-input {
   font-size: 12px !important;
 }
 .ant-avatar {
-  color: #000 !important;
-  background-color: #f1f7f9 !important;
+  color: #fff !important;
   border: 1px solid #d1d1d1;
 }
 .ant-layout-header {

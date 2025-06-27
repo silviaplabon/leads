@@ -8,12 +8,12 @@
   font-display: swap;
 }
 @font-face {
-  font-family: 'HankenGrotesk';
+  font-family: 'MonaSans';
   font-style: normal;
   font-weight: 400;
   src:
-    local('HankenGrotesk'),
-    url('./assets/HankenGrotesk-Regular.woff') format('truetype');
+    local('MonaSans'),
+    url('./assets/Urbanist-Regular.woff2') format('truetype');
   font-display: swap;
 }
 
@@ -35,9 +35,9 @@ code {
   --ternary-color:#D2Dee8;
   --font-color: #2b3a67;
   --text-color: #003366;
-  --secondary-color:#e394551;
+  --secondary-color:#edeff1;
   --border-color: #c3c3c3;
-  --font-family: HankenGrotesk;
+  --font-family:MonaSans;
   --font-weight: 400;
 }
 .ant-typography {

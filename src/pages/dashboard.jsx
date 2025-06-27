@@ -228,7 +228,7 @@ const Dashboard = ({ isMyTasks }) => {
           userType,
           isMyTasks
         ),
-      width: 110,
+      width: 100,
       render: (item, index) => renderTableCell(index, item?.name, ""),
     },
     {
@@ -243,7 +243,7 @@ const Dashboard = ({ isMyTasks }) => {
           userType
         ),
       width: 110,
-      render: (item, index) => renderTableCell(index, item?.status, ""),
+      render: (item, index) => renderTableCell(index, item?.leadStatus, ""),
     },
     {
       title: () =>
@@ -254,7 +254,7 @@ const Dashboard = ({ isMyTasks }) => {
           handleSorting,
           sortObj
         ),
-      width: 100,
+      width: 80,
       render: (item, index) =>
         renderTableCell(index, item?.leadOwner, "", true, "", true),
     },

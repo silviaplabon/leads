@@ -4,7 +4,7 @@ import { FaHomeIcon, FaWarn, TiIcon } from "./svgIcons";
 import dayjs from "dayjs";
 
 export const DefaultPageLimit = 15;
-export const FontFamily = `HankenGrotesk`;
+export const FontFamily = ``;
 
 export const CONSTANTS = {
   localStorageRequests: "hrResignationRequests",
@@ -183,8 +183,8 @@ export const ThemeData = {
   primary: "#000229",
   ternary: "#D2Dee8",
   relaxedBlue: "#d2dee8",
-  warmSilk:'#F4F0Eb',
-  greenMindset:'#4c3f1c',
+  warmSilk: "#F4F0Eb",
+  greenMindset: "#4c3f1c",
   approved: "#4eaa71",
   approvedBg: "#dafae4",
   rejectedBg: "#fde0e0",
@@ -349,7 +349,7 @@ export const NavItems = [
 export const ToastMessage = (
   typeOfMessage,
   toastMessage,
-  fontFamily = `HankenGrotesk`
+  fontFamily = `Urbanist`
 ) => {
   const commonProps = {
     position: "top-right",
@@ -1027,3 +1027,42 @@ export const LeadDetailSummaryInfo = [
     keyName: "budgetEstimate",
   },
 ];
+export const getRandomTextAvatarColor = () => {
+  const colors = [
+    "#FF6B6B",
+    "#6BCB77",
+    "#4D96FF",
+    "#FFC75F",
+    "#F9F871",
+    "#A66DD4",
+    "#FF9671",
+    "#00C9A7",
+    "#C34A36",
+    "#845EC2",
+    "#008F7A",
+    "#B39CD0",
+    "#F66D44",
+    "#E3B505",
+    "#5CDB95",
+  ];
+  return colors[Math.floor(Math.random() * colors.length)];
+};
+export const colorCodeBasedOnStatus = {
+  "Need Contact Details": ["#f1ecde", "#884d2b"],
+  "Tour Scheduled": ["#f1ecde", "#884d2b"],
+  "Fast Response": ["#d9f1e6", "#19613d"],
+  "Going Cold": ["#e5e5e5", "#666666"],
+  "Lead": ["#e5e5e5", "#666666"],
+  "Need Follow Up": ["#dbecf6", "#3878bc"],
+  "Application Received": ["#dbecf6", "#3878bc"],
+};
+
+export const getRecentActivityColor = (item, isBg) => {
+  const updatedColor = colorCodeBasedOnStatus[item]
+    ? isBg
+      ? colorCodeBasedOnStatus[item][0]
+      : colorCodeBasedOnStatus[item][1]
+    : "-";
+
+  return updatedColor;
+};

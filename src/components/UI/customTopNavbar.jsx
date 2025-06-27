@@ -81,7 +81,7 @@ const CustomTopNavbar = () => {
         justifyContent: "space-between",
         alignItems: "center",
         padding: "0.7rem 1.5rem 0.3rem 1.2rem",
-        backgroundColor: ThemeData.relaxedBlue,
+        backgroundColor: '#fff',
       }}
     >
       <div>

@@ -5,10 +5,8 @@
   cursor: pointer !important;
 }
 body {
-  background-color: #d2dee8 !important;
   overflow: hidden;
-  font-family: 'HankenGrotesk';
-  font-size: 12px;
+  font-size: 11px;
   caret-color: var(--primary-color) !important;
 }
 p {
