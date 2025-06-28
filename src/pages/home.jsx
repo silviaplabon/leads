@@ -23,14 +23,14 @@ import {
 import TableCellValue from "../components/UI/Table/tableCellValue";
 import HeaderColumn from "../components/UI/Table/headerColumn";
 import { Avatar } from "antd";
-import CustomTable from "../components/UI/Table/customTable";
 import { fakeLeadsData } from "../utils/fakeData";
+import CustomTable from "../components/UI/Table/customTable";
 
 const Home = ({ selectedButton }) => {
   const [allStatus, setAllStatus] = useState("All Status");
   const [allSources, setAllSources] = useState("All Sources");
   const [sortText, setSortText] = useState("Recently Updated");
-  const [typeOfLeadsView, setTypeOfLeadsView] = useState("");
+  const [typeOfLeadsView, setTypeOfLeadsView] = useState("Board");
   const [pageLoader] = useState(false);
   const [pageDetails, setPageDetails] = useState();
   const [pageData] = useState(fakeLeadsData);
@@ -260,6 +260,7 @@ const Home = ({ selectedButton }) => {
               }}
               handleButtonClick={() => {
                 // downloadReport()
+                setTypeOfLeadsView('')
               }}
             ></CustomButton>
             <CustomButton
@@ -295,7 +296,7 @@ const Home = ({ selectedButton }) => {
             >
               <CustomTypography
                 style={{
-                  marginRight: "0.5rem",
+                  marginRight: "0.7rem",
                   font: `normal normal 700 11px ${FontFamily}`,
                 }}
                 textVal={"Show As"}
@@ -381,7 +382,7 @@ const Home = ({ selectedButton }) => {
                 style={{
                   maxWidth: "140px",
                   minWidth: "120px",
-                  margin: "0 0.5rem",
+                  margin: "0 0.2rem",
                 }}
               >
                 <CustomAutoComplete
@@ -445,13 +446,12 @@ const Home = ({ selectedButton }) => {
             </div>
           </div>
         </div>
-        {selectedButton === "Dashboard" ? (
+        {typeOfLeadsView === "List" ? (
           <Dashboard></Dashboard>
         ) : typeOfLeadsView === "Board" ? (
           <LeadCards></LeadCards>
         ) : (
-          <div>
-            <CustomTable
+         <>   <CustomTable
               pageNumber={pageDetails?.pageNumber}
               changePageFn={changePageFn}
               noOfPages={pageDetails?.noOfPages}
@@ -464,11 +464,13 @@ const Home = ({ selectedButton }) => {
               pageLoader={pageLoader}
               columns={leadDashboardColumns}
               totalCount={pageDetails?.totallineCount}
-            ></CustomTable>
-          </div>
+            ></CustomTable></>
         )}
       </div>
     </>
   );
 };
 export default Home;
+
+         
+        

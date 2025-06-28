@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useRef, useState } from "react";
-import { DefaultPageLimit, GetRequestsOrTasksLovData } from "../utils/util.jsx";
+import { DefaultPageLimit, getRecentActivityColor, GetRequestsOrTasksLovData } from "../utils/util.jsx";
 import TableCellValue from "../components/UI/Table/tableCellValue.jsx";
 import { useSelector } from "react-redux";
 import CustomTable from "../components/UI/Table/customTable.jsx";
@@ -208,7 +208,7 @@ const Dashboard = ({ isMyTasks }) => {
   const leadDashboardColumns = [
     {
       title: () => "",
-      width: 50,
+      width: 30,
       render: () => (
         <div style={{ display: "flex", justifyContent: "center" }}>
           {" "}
@@ -242,8 +242,20 @@ const Dashboard = ({ isMyTasks }) => {
           activeGroup,
           userType
         ),
-      width: 110,
-      render: (item, index) => renderTableCell(index, item?.leadStatus, ""),
+      width: 130,
+      render: (item, index) => <>
+         <div
+          style={{
+            padding: "0rem 0.5rem",
+            borderRadius: "0.2rem",
+            display: "flex",
+            alignItems: "center",
+            width: "fit-content",
+            color:getRecentActivityColor(item?.leadStatus, false),
+            backgroundColor: getRecentActivityColor(item?.leadStatus, true)
+          }}
+        >{`${item?.leadStatus}`}</div>
+      </>,
     },
     {
       title: () =>
@@ -254,9 +266,9 @@ const Dashboard = ({ isMyTasks }) => {
           handleSorting,
           sortObj
         ),
-      width: 80,
+      width: 90,
       render: (item, index) =>
-        renderTableCell(index, item?.leadOwner, "", true, "", true),
+        renderTableCell(index, item?.leadOwner, "", true, "", ),
     },
 
     {
@@ -283,7 +295,7 @@ const Dashboard = ({ isMyTasks }) => {
       width: 110,
       hidden: false,
       render: (item, index) =>
-        renderTableCell(index, item?.createdOn, "", true),
+        renderTableCell(index, item?.createdOn, "Date", true),
     },
   ];
 

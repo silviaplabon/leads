@@ -118,7 +118,7 @@ p {
 .ant-select-selector {
   border-color: var(--border-color) !important;
   box-shadow: none !important;
-  height:32px!important;
+  height:29px!important;
   box-shadow:0 -1px 5px #ffffffb2,0 1px 5px rgba(94,104,121,.945)
 }
 /* DOCUMENT VIEW MODAL CSS */

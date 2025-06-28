@@ -1,16 +1,20 @@
 /* eslint-disable no-debugger */
 import { Avatar, Badge, Card, Col, Row, Typography } from "antd";
 import {
+  FontFamily,
   GetInitialsAvatar,
   getRandomTextAvatarColor,
   getRecentActivityColor,
   ParseDate,
+  ThemeData,
 } from "../utils/util";
 import { GlobeSvgIcon, MailSvgIcon, PhoneSvgIcon } from "../utils/svgIcons";
 import CustomTypography from "../components/UI/customTypography";
 import { fakeLeadsData } from "../utils/fakeData";
+import { useNavigate } from "react-router-dom";
 
 const LeadCards = () => {
+  const navigate=useNavigate()
   const groupBy = (array, key) => {
     return array.reduce((result, item) => {
       const groupKey = item[key] || "Other";
@@ -30,13 +34,13 @@ const LeadCards = () => {
 
   return (
     <>
-      <Row gutter={[10, 10]}>
+      <Row gutter={[10, 10]} style={{borderRadius:"0.5"}}>
         {Object.entries(groupedData).map(([actionType, leads]) => (
           <Col lg={6} key={actionType}>
             <div
               style={{
-                backgroundColor: "#f3f5f7",
-                padding: "0.5rem 0.7rem",
+                backgroundColor: ThemeData.warmSilk,
+                padding: "0.5rem 0.3rem",
                 borderRadius: "0.5rem",
               }}
             >
@@ -56,16 +60,16 @@ const LeadCards = () => {
                 >
                   <span
                     style={{
-                      width: "4px",
-                      height: "4px",
-                      backgroundColor: "#000",
+                      width: "5px",
+                      height: "5px",
+                      backgroundColor:getRecentActivityColor(actionType)||"#000",
                       borderRadius: "5px",
                       marginRight: "7px",
                     }}
                   ></span>
                   <CustomTypography
                     fontWeight={"bold"}
-                    fontSize={12}
+                    fontSize={13}
                     textVal={actionType}
                     style={{
                       textOverflow: "ellipsis",
@@ -76,8 +80,8 @@ const LeadCards = () => {
                   <Badge
                     count={45}
                     showZero
-                    color="#faad14"
-                    style={{ marginLeft: "0.5rem" }}
+                    color="#000"
+                    style={{ marginLeft: "0.5rem" ,backgroundColor:ThemeData.primary}}
                   />
                 </div>
                 <Typography style={{ fontWeight: "bold", cursor: "pointer" }}>
@@ -93,6 +97,7 @@ const LeadCards = () => {
                     marginTop: "0.3rem",
                   }}
                   key={`${leadItem?.name}-${index}`}
+                  onClick={()=>navigate('/leads/1')}
                 >
                   <Card.Meta
                     title={
@@ -112,6 +117,7 @@ const LeadCards = () => {
                           >
                             <Avatar
                               style={{
+                                font:`normal normal 600 12px ${FontFamily}`,
                                 backgroundColor: getRandomTextAvatarColor(),
                               }}
                             >
@@ -143,7 +149,7 @@ const LeadCards = () => {
                         <CustomTypography
                           textVal={leadItem?.name}
                           fontWeight={700}
-                          fontSize={12}
+                          fontSize={13}
                           style={{ marginTop: "0.3rem" }}
                         ></CustomTypography>
                         <CustomTypography

@@ -124,12 +124,10 @@ export const TaskNameByNumber = {
   3: "CMO Approval",
   4: "HR Final Approval",
 };
-export const FormatDate = (date, includeHM) => {
-  return date
-    ? includeHM === "Date"
-      ? dayjs(date, "DD-MM-YYYY")?.format("DD-MMM-YYYY")
-      : dayjs(date, "DD-MM-YYYY hh:mm")?.format("DD-MMM-YYYY hh:mm A")
-    : "-";
+export const FormatDate = (date, includeHM,isDiffFormat) => {
+  return  date?isDiffFormat?  includeHM === "Date" ? dayjs(date, "YYYY-MM-DD")?.format("DD-MMM-YYYY")
+      : dayjs(date, "YYYY-MM-DD hh:mm")?.format("DD-MMM-YYYY hh:mm A"): includeHM? dayjs(date, "DD-MM-YYYY")?.format("DD-MMM-YYYY")
+      : dayjs(date, "DD-MM-YYYY hh:mm")?.format("DD-MMM-YYYY hh:mm A"):"-"
 };
 export const getLocalStorageData = (keyName) => {
   try {
@@ -179,11 +177,11 @@ export const taskIgnoreColumns = [
 ];
 
 export const ThemeData = {
-  secondary: "#e394551",
+  secondary: "#3d4554",
   primary: "#000229",
   ternary: "#D2Dee8",
   relaxedBlue: "#d2dee8",
-  warmSilk: "#F4F0Eb",
+  warmSilk: "#f4f0eb",
   greenMindset: "#4c3f1c",
   approved: "#4eaa71",
   approvedBg: "#dafae4",
@@ -1052,7 +1050,7 @@ export const colorCodeBasedOnStatus = {
   "Tour Scheduled": ["#f1ecde", "#884d2b"],
   "Fast Response": ["#d9f1e6", "#19613d"],
   "Going Cold": ["#e5e5e5", "#666666"],
-  "Lead": ["#e5e5e5", "#666666"],
+  "Lead Received": ["#e5e5e5", "#666666"],
   "Need Follow Up": ["#dbecf6", "#3878bc"],
   "Application Received": ["#dbecf6", "#3878bc"],
 };

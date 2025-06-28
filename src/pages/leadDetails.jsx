@@ -1,13 +1,14 @@
-import { Row, Segmented } from "antd";
+import { Card, Col, Row, Segmented, Typography } from "antd";
 import CustomTypography from "../components/UI/customTypography";
-import { LeadDetailsInfo } from "../utils/util";
+import { GetInitialsAvatar, getRandomTextAvatarColor, LeadDetailsInfo, ThemeData } from "../utils/util";
 import CustomLabelAndValueContainer from "../components/UI/Container/customLabelAndValueContainer";
 import { useState } from "react";
 import CustomInput from "../components/UI/Input/customInput";
 import LeadSummaryDetails from "../features/leadSummaryDetails";
+import Avatar from "antd/es/avatar/Avatar";
 
 const LeadDetails = () => {
-  const [alignValue, setAlignValue] = useState("");
+  const [alignValue, setAlignValue] = useState("Lead Details");
   const [, setNote] = useState("");
   const GridSize = {
     childrenGridSize: 24,
@@ -35,32 +36,128 @@ const LeadDetails = () => {
         style={{}}
         textVal={`Lead Summary -Name [ID]`}
       ></CustomTypography>
-      <Row
-        gutter={[15, 10]}
-        style={{
-          marginTop: "1rem",
-          padding: "10px",
-          border: "1px solid #dde7ee",
-          borderRadius: "13px",
-          boxShadow: "0 .1875rem .1875rem 0 #0e223812",
-        }}
-      >
-        {LeadDetailsInfo.map((item, index) => {
-          return (
-            <CustomLabelAndValueContainer
-              identifier={`${index}-${item?.title}`}
-              key={`${index}-${item?.title}-${item?.value}`}
-              title={item?.title}
-              value={
-                leadDetail[item?.keyName] ? leadDetail[item?.keyName] : "-"
-              }
-              isDetailsItem={true}
-            />
-          );
-        })}
+      <Row gutter={[30,20]}>
+        <Col lg={16}>
+          <Row
+            gutter={[15, 10]}
+            style={{
+              marginTop: "1rem",
+              padding: "10px",
+              border: "1px solid #dde7ee",
+              borderRadius: "13px",
+              boxShadow: "0 .1875rem .1875rem 0 #0e223812",
+            }}
+          >
+            {LeadDetailsInfo.map((item, index) => {
+              return (
+                <CustomLabelAndValueContainer
+                  identifier={`${index}-${item?.title}`}
+                  key={`${index}-${item?.title}-${item?.value}`}
+                  title={item?.title}
+                  value={
+                    leadDetail[item?.keyName] ? leadDetail[item?.keyName] : "-"
+                  }
+                  isDetailsItem={true}
+                />
+              );
+            })}
+          </Row>
+          <Row>
+            <Card
+              style={{
+                borderRadius: "20px",
+                backgroundColor: "#fff",
+                height: "40px",
+                width: "100%",
+                marginTop: "10px",
+                marginBottom: "10px",
+              }}
+            >
+              <div style={{ display: "flex", alignItems: "center" }}>
+                {[
+                  "Lead Details",
+                  "Notes",
+                  "Activities",
+                  "Properties",
+                  "Documents",
+                ]?.map((item, index) => (
+                  <div
+                    onClick={() => {
+                      setAlignValue(item);
+                    }}
+                    style={{
+                      maxWidth: "140px",
+                      minWidth: "120px",
+                      padding: "0px 20px",
+                    }}
+                  >
+                    <CustomTypography textVal={item}></CustomTypography>
+                  </div>
+                ))}
+              </div>
+            </Card>
+          </Row>
+          <Row
+            style={{
+              border: "1px solid #dde7ee",
+              borderRadius: "20px",
+              backgroundColor: "#fff",
+              boxShadow: "0 .1875rem .1875rem 0 #0e223812",
+            }}
+          >
+            {alignValue === "Lead Details" && (
+              <LeadSummaryDetails></LeadSummaryDetails>
+            )}
+            {alignValue === "Notes" && (
+              <>
+                {" "}
+                <CustomInput
+                  labelName=""
+                  name="notes"
+                  inputType="TextArea"
+                  minRows={15}
+                  maxRows={20}
+                  isRequired={false}
+                  setValue={setNote}
+                  handleOnChange={() => {}}
+                  gridSize={GridSize}
+                  hideErrorMessageContainer={true}
+                />
+              </>
+            )}
+            {alignValue === "Activities" && <></>}
+            {alignValue === "Properties" && <></>}
+            {alignValue === "Documents" && <></>}
+          </Row>
+        </Col>
+        <Col lg={8}>
+        <Card>
+          <Typography>Quick Contacts</Typography>
+          <div>
+            <div >
+              <Avatar.Group
+            max={{
+              count: 2,
+              style: { color: "#f56a00" },
+            }}
+          >
+            <Avatar
+              style={{
+                backgroundColor: ThemeData.ternary,
+                height:'35px',
+                width:'35px'
+              }}
+            >
+              {/* {GetInitialsAvatar(leadItem?.name)} */}
+            </Avatar>
+          </Avatar.Group>{" "}
+            </div>
+          </div>
+        </Card>
+        </Col>
       </Row>
 
-      <Segmented
+      {/* <Segmented
         value={alignValue}
         style={{ marginBottom: 8, marginTop: 9 }}
         onChange={setAlignValue}
@@ -71,42 +168,7 @@ const LeadDetails = () => {
           "Properties",
           "Documents",
         ]}
-      />
-      <div
-        style={{
-          border: "1px solid #dde7ee",
-          borderRadius: "13px",
-          backgroundColor: "#f1f7f9",
-
-          boxShadow: "0 .1875rem .1875rem 0 #0e223812",
-        }}
-      >
-        {alignValue === "Lead Details" && (
-          <LeadSummaryDetails></LeadSummaryDetails>
-        )}
-        {alignValue === "Notes" && (
-          <>
-            {" "}
-            <Row gutter={[10, 2]} style={{ width: "100%", padding: "0.5rem" }}>
-              <CustomInput
-                labelName=""
-                name="notes"
-                inputType="TextArea"
-                minRows={15}
-                maxRows={20}
-                isRequired={false}
-                setValue={setNote}
-                handleOnChange={() => {}}
-                gridSize={GridSize}
-                hideErrorMessageContainer={true}
-              />
-            </Row>
-          </>
-        )}
-        {alignValue === "Activities" && <></>}
-        {alignValue === "Properties" && <></>}
-        {alignValue === "Documents" && <></>}
-      </div>
+      /> */}
     </div>
   );
 };

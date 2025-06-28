@@ -5,7 +5,7 @@ import { FormatDate } from '../../../utils/util.jsx'
 const TableCellValue = ({ isLink, index, value, onClick, formatType, style, isNavigateLink }) => {
   const formattedValue = value
     ? formatType?.includes('Date')
-      ? FormatDate(value, formatType)
+      ? FormatDate(value, formatType,true)
       : value
     : '-'
 
@@ -17,6 +17,7 @@ const TableCellValue = ({ isLink, index, value, onClick, formatType, style, isNa
       onClick={isLink ? onClick : undefined}
       key={index}
       title={formattedValue}
+      
       style={{ ...style, textDecoration: isNavigateLink ? 'underline' : '' }}
     >
       {formattedValue}

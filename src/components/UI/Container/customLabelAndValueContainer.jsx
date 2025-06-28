@@ -45,9 +45,9 @@ const CustomLabelAndValueContainer = ({
         >
           <Typography
             style={{
-              font: `normal normal 600 13px  ${FontFamily}`,
+              font: `normal normal 700 11px ${FontFamily}`,
               fontWeight: '700!important',
-              color: ThemeData.textColor,
+              color:'#000',
               marginTop: '0px',
               paddingTop: isVerticalItem ? '0px!important' : '',
             }}
@@ -62,9 +62,10 @@ const CustomLabelAndValueContainer = ({
         >
           <Typography
             style={{
-              font: `normal normal normal 12px ${FontFamily}`,
+              font: `normal normal normal 11px ${FontFamily}`,
               color: '#000',
               marginTop: '0px',
+              fontWeight:400,
               cursor: typeof handleOnClick === 'function' ? 'pointer' : '',
               ...valueStyle,
             }}

@@ -16,7 +16,7 @@
 }
 
 .ant-select-selector {
-  height: 25px !important;
+  height: 28px !important;
 }
 .ant-select {
   min-width: 80px !important;
@@ -32,6 +32,10 @@
 .ant-select-item-option {
   min-height: 26px;
   line-height: 1;
+}
+.ant-input{
+  border-radius:12px!important;
+  height:45px!important;
 }
 
 .ant-select-item-option span {
@@ -56,6 +60,7 @@
   text-overflow: ellipsis !important;
   overflow: hidden !important;
   white-space: nowrap !important;
+  border-radius:20px!important
 }
 .ant-input-affix-wrapper:focus-within,
 .ant-input-affix-wrapper:hover {

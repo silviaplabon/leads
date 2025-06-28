@@ -80,13 +80,13 @@ const CustomTopNavbar = () => {
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
-        padding: "0.7rem 1.5rem 0.3rem 1.2rem",
+        padding: "0.7rem 3.5rem 0.9rem 1.2rem",
         backgroundColor: '#fff',
       }}
     >
       <div>
         <Input
-          style={{ height: "28px", marginRight: "0.5rem" }}
+          style={{ height: "28px", marginRight: "0.5rem" ,width:'200px',borderRadius:'15px'}}
           placeholder="Search"
           prefix={<SearchOutlined />}
         />
@@ -94,9 +94,9 @@ const CustomTopNavbar = () => {
       <div style={{ display: "flex", alignItems: "center" }}>
         {" "}
         <div style={{ display: "flex", alignItems: "center" }}>
-          <div style={{ paddingRight: "1rem" }}>
+          <div style={{ paddingRight: "1.5rem" }}>
             {" "}
-            <Badge count={10}>
+            <Badge count={10} style={{backgroundColor:ThemeData.primary}}>
               <Avatar
                 shape="square"
                 size="large"
@@ -104,7 +104,7 @@ const CustomTopNavbar = () => {
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
-                  color: "#f1f7f9",
+                  color: ThemeData.primary,
                   cursor: "pointer",
                 }}
               >
@@ -124,8 +124,8 @@ const CustomTopNavbar = () => {
               shape="circle"
               icon={FaRegUser()}
               style={{
-                backgroundColor: "#f1f7f9",
-                color: "#000",
+                backgroundColor: ThemeData.primary,
+                color: "#fff",
                 borderWidth: 2,
                 borderColor: "#000",
               }}

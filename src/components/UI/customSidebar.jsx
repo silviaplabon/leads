@@ -10,15 +10,15 @@ const CustomSidebar = () => {
       case "1":
         navigate("/");
         break;
-      case "2":
-        navigate("/leads");
-        break;
+      // case "2":
+      //   navigate("/leads");
+      //   break;
       default:
         break;
     }
   };
   return (
-    <div style={{ display: "flex", flexDirection: "column" }}>
+    <div style={{ display: "flex", flexDirection: "column" ,marginTop:"1.4rem"}}>
       {/* <Menu
         mode="inline"
         defaultSelectedKeys={["2"]}
@@ -33,13 +33,13 @@ const CustomSidebar = () => {
         onClick={handleMenuClick}
         defaultSelectedKeys={["1"]}
         items={[
+          // {
+          //   key: "1",
+          //   icon: <MailOutlined />,
+          //   label: "Dashboard",
+          // },
           {
             key: "1",
-            icon: <MailOutlined />,
-            label: "Dashboard",
-          },
-          {
-            key: "2",
             icon: <AppstoreOutlined />,
             label: "Leads",
           },

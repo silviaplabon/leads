@@ -73,7 +73,7 @@
   color: red !important;
 }
 .ant-menu-title-content {
-  font: normal normal 500 14px var(--font-family) !important;
+  font: normal normal 600 14px var(--font-family) !important;
   color: #000;
 }
 
@@ -81,27 +81,28 @@
   background-color: var(--secondary-color) !important;
 }
 .ant-menu-item-selected {
-  background-color: var(--primary-color) !important;
+  background-color: var(--warm-silk) !important;
 }
 .ant-menu-item-icon {
   color: #000 !important;
 }
-.ant-menu-item-selected .ant-menu-title-content,
-.ant-menu-item-selected .ant-menu-item-icon {
-  color: #fff !important;
-}
+
 .ant-segmented-item-label {
   color: #000 !important;
   font: normal normal 500 14px/28px var(--font-family) !important;
 }
 .ant-layout-sider {
-  background-color: var(--secondary-color);
+  background-color: var(--ternary-color);
 }
 
 .ant-menu-item {
   height: 32px !important;
   line-height: 32px !important;
+  border-radius:25px!important;
 }
 .ant-layout-sider-children{
   padding:0px 8px!important;
+}
+.ant-input-string{
+  font:normal normal 600 12px var(--font-family)
 }
