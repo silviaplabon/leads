@@ -1,7 +1,5 @@
 import { Button, Col, Image, Row } from "antd";
 import { useState } from "react";
-import { LeadDetailSummaryInfo } from "../utils/util";
-import CustomLabelAndValueContainer from "../components/UI/Container/customLabelAndValueContainer";
 import CustomInput from "../components/UI/Input/customInput";
 
 const LeadSummaryDetails = () => {
@@ -55,7 +53,6 @@ const LeadSummaryDetails = () => {
             justifyContent: "flex-start",
             height: "160px",
             alignItems: "center",
-            justifyContent: "center",
           }}
         >
           <div

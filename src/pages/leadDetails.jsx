@@ -133,25 +133,8 @@ const LeadDetails = () => {
         <Col lg={8}>
         <Card>
           <Typography>Quick Contacts</Typography>
-          <div>
-            <div >
-              <Avatar.Group
-            max={{
-              count: 2,
-              style: { color: "#f56a00" },
-            }}
-          >
-            <Avatar
-              style={{
-                backgroundColor: ThemeData.ternary,
-                height:'35px',
-                width:'35px'
-              }}
-            >
-              {/* {GetInitialsAvatar(leadItem?.name)} */}
-            </Avatar>
-          </Avatar.Group>{" "}
-            </div>
+          <div style={{width:"60px",height:'60px',backgroundColor:ThemeData.warmSilk,borderRadius:"50%"}}>
+          TEST
           </div>
         </Card>
         </Col>
