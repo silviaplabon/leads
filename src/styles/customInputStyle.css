@@ -78,10 +78,14 @@
 }
 
 .ant-menu-dark {
-  background-color: var(--secondary-color) !important;
+  background-color: var(--relaxed-blue) !important;
 }
 .ant-menu-item-selected {
-  background-color: var(--warm-silk) !important;
+  background-color:var(--primary-color) !important;
+  color:#fff!important;
+}
+.ant-menu-item-selected .ant-menu-item-icon,.ant-menu-item-selected .ant-menu-title-content{
+  color:#fff!important;
 }
 .ant-menu-item-icon {
   color: #000 !important;
@@ -92,7 +96,7 @@
   font: normal normal 500 14px/28px var(--font-family) !important;
 }
 .ant-layout-sider {
-  background-color: var(--ternary-color);
+  background-color: var(--relaxed-blue)!important;
 }
 
 .ant-menu-item {
@@ -105,4 +109,7 @@
 }
 .ant-input-string{
   font:normal normal 600 12px var(--font-family)
+}
+.tabsContainerLeadDetails .ant-card-body{
+  padding:3px!important;
 }

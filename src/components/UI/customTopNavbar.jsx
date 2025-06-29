@@ -84,7 +84,7 @@ const CustomTopNavbar = () => {
         backgroundColor: '#fff',
       }}
     >
-      <div>
+      <div className="searchInputContainer">
         <Input
           style={{ height: "28px", marginRight: "0.5rem" ,width:'200px',borderRadius:'15px'}}
           placeholder="Search"

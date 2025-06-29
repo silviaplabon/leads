@@ -179,7 +179,7 @@ export const taskIgnoreColumns = [
 export const ThemeData = {
   secondary: "#3d4554",
   primary: "#000229",
-  ternary: "#D2Dee8",
+  ternary: "#edf1f5",
   relaxedBlue: "#d2dee8",
   warmSilk: "#f4f0eb",
   greenMindset: "#4c3f1c",

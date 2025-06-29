@@ -40,8 +40,8 @@ const LeadSummaryDetails = () => {
           }}
         >
           <Image
-            width={150}
-            height={150}
+            width={140}
+            height={140}
             style={{ borderRadius: "15px" }}
             src="https://img.freepik.com/premium-vector/avatar-profile-icon-flat-style-female-user-profile-vector-illustration-isolated-background-women-profile-sign-business-concept_157943-38866.jpg"
           />
@@ -51,7 +51,7 @@ const LeadSummaryDetails = () => {
           style={{
             display: "flex",
             justifyContent: "flex-start",
-            height: "160px",
+            height: "150px",
             alignItems: "center",
           }}
         >

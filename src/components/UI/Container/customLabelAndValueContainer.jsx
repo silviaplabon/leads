@@ -28,12 +28,12 @@ const CustomLabelAndValueContainer = ({
       md={gridSize?.inputGridSize}
       style={{
         marginTop: isVerticalItem && isFirstItem ? '11px' : '0px!important',
-        paddingTop: isVerticalItem ? '0rem' : '0.2rem',
+        paddingTop: isVerticalItem ? '0rem' : '0.1rem',
         ...style,
       }}
       key={identifier || title}
     >
-      <Row gutter={[10, 5]}>
+      <Row gutter={[5, 2]}>
         <Col
           xs={isVerticalItem ? 24 : gridSize?.titleGridSize ? gridSize?.titleGridSize : 10}
           md={isVerticalItem ? 24 : gridSize?.titleGridSize ? gridSize?.titleGridSize : 8}
@@ -46,8 +46,9 @@ const CustomLabelAndValueContainer = ({
           <Typography
             style={{
               font: `normal normal 700 11px ${FontFamily}`,
-              fontWeight: '700!important',
               color:'#000',
+              fontSize:'11px',
+              fontWeight:600,
               marginTop: '0px',
               paddingTop: isVerticalItem ? '0px!important' : '',
             }}
@@ -64,8 +65,9 @@ const CustomLabelAndValueContainer = ({
             style={{
               font: `normal normal normal 11px ${FontFamily}`,
               color: '#000',
-              marginTop: '0px',
+              fontSize:'11px',
               fontWeight:400,
+              marginTop: '0px',
               cursor: typeof handleOnClick === 'function' ? 'pointer' : '',
               ...valueStyle,
             }}

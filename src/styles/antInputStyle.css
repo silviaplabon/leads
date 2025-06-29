@@ -35,7 +35,10 @@
 }
 .ant-input{
   border-radius:12px!important;
-  height:45px!important;
+  height:35px!important;
+}
+.searchInputContainer .ant-input{
+  height:15px!important;
 }
 
 .ant-select-item-option span {

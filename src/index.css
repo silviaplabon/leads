@@ -40,6 +40,8 @@ code {
   --border-color: #c3c3c3;
   --font-family:Urbanist;
   --font-weight: 400;
+  --relaxed-blue: rgb(237, 241, 245)
+
 }
 .ant-typography {
   font-family: var(--font-family) !important;
